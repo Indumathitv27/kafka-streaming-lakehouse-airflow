@@ -23,6 +23,18 @@ The pipeline follows a Lakehouse pattern with clearly separated responsibilities
     Python for producers, Spark jobs, and orchestration logic
     Parquet format for analytical storage
 
+**Storage Initialization (Required Step)**
+This project follows a Lakehouse design where data is generated at runtime and is not committed to Git.
+Before running the pipeline, initialize the local storage structure using the provided setup script.
+
+Steps:
+    1.Clone the repository
+    2.From the project root, run: ./scripts/init_storage.sh
+
+This script creates the required Bronze, Silver, Gold, and checkpoint directories used by Spark and Airflow.
+
+Data files are generated dynamically during execution and are intentionally excluded from version control.
+
 **Data Flow Explanation**
 
 **Kafka Producer**
