@@ -113,3 +113,16 @@ All data outputs are excluded from Git to keep the repository lightweight.
     Deploy to cloud storage such as ADLS or S3
     Integrate BI tools for visualization
 
+**Local Setup Instructions**
+1. Clone the repository
+2. Initialize storage directories using:
+    bash scripts/init_storage.sh
+3. Start infrastructure using:
+    docker compose up -d
+4. Start Kafka producer using:
+    python producer/producer.py
+5. Start Spark Runner by:
+    python runner.py
+6. Trigger DAG from Airflow UI
+
+

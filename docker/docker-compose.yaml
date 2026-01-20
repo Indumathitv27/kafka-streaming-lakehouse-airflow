@@ -90,7 +90,14 @@ services:
       AIRFLOW__CORE__LOAD_EXAMPLES: "False"
       AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "False"
     volumes:
-      - ..:/opt/airflow
+      - ../dags:/opt/airflow/dags
+      - ../airflow/dags:/opt/airflow/airflow/dags
+      - ../spark:/opt/airflow/spark
+      - ../producer:/opt/airflow/producer
+      - ../scripts:/opt/airflow/scripts
+      - ../runner.py:/opt/airflow/runner.py
+      - ../webserver_config.py:/opt/airflow/webserver_config.py
+      - ../data:/opt/airflow/data
       - airflow_logs:/opt/airflow/logs
     command: >
       bash -lc "airflow db migrate && airflow users 
@@ -115,8 +122,16 @@ services:
       AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "False"
       AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "True"
     volumes:
+      - ../dags:/opt/airflow/dags
+      - ../airflow/dags:/opt/airflow/airflow/dags
+      - ../spark:/opt/airflow/spark
+      - ../producer:/opt/airflow/producer
+      - ../scripts:/opt/airflow/scripts
+      - ../runner.py:/opt/airflow/runner.py
+      - ../webserver_config.py:/opt/airflow/webserver_config.py
+      - ../data:/opt/airflow/data
       - airflow_logs:/opt/airflow/logs
-      - ..:/opt/airflow
+
 
     ports:
       - "8081:8080"
@@ -135,8 +150,15 @@ services:
       AIRFLOW__CORE__LOAD_EXAMPLES: "False"
       AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "False"
     volumes:
+      - ../dags:/opt/airflow/dags
+      - ../airflow/dags:/opt/airflow/airflow/dags
+      - ../spark:/opt/airflow/spark
+      - ../producer:/opt/airflow/producer
+      - ../scripts:/opt/airflow/scripts
+      - ../runner.py:/opt/airflow/runner.py
+      - ../webserver_config.py:/opt/airflow/webserver_config.py
+      - ../data:/opt/airflow/data
       - airflow_logs:/opt/airflow/logs
-      - ..:/opt/airflow
     command: scheduler
 
 volumes:
