@@ -1,0 +1,34 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.env
+
+# OS
+.DS_Store
+
+# Airflow
+airflow-webserver.pid
+airflow.cfg
+logs/
+airflow/logs/
+
+# Data outputs (DO NOT COMMIT)
+data/
+**/*.parquet
+**/_spark_metadata/
+**/checkpoints/
+**/_SUCCESS
+
+# Spark / local temp
+.metastore_db/
+derby.log
+
+# IDE
+.vscode/
+.idea/
+
+# allow placeholders to keep folder structure
+!data/**/.gitkeep
